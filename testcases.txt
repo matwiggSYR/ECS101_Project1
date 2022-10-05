@@ -1,0 +1,7 @@
+Cuse
+Otto
+ECS101
+PYTHON
+Hello World!
+Number 22
+785
