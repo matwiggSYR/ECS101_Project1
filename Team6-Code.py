@@ -2,8 +2,8 @@ import makeDictionary
 import random
 def Code(txtFile):
     myTxtFile = open(txtFile)
-    randomNum = random.randint(0,3)
-    myStr = myTxtFile.readline(randomNum)
+    randomNum = random.randint(1,5)
+    myStr = myTxtFile.read()
     asciiList = []
     binaryList = []
     for i in myStr:
@@ -11,11 +11,15 @@ def Code(txtFile):
     for i in asciiList:
         binaryList.append(str(int(bin(i)[2:])))
     binaryStr = ''.join(binaryList)
-    myDec = []
+    myDec = 0
     myKey = makeDictionary.getCodeMap('Char2Bin')
     for i in myStr:
-        myDec.append(str(myKey.get(i)))
-    myDecStr = ''.join(myDec)
+        temp = str(myKey.get(i))
+        print("temp:",temp)
+        myDec = str(myDec)
+        myDec = bin(int(myDec,2) + int(temp,2))[2:]
+    myDec = int(myDec,2)
+    myDecStr = str(myDec)
     myOutput = myDecStr+"."+binaryStr
     out_file = open('bin_output.txt','w+')
     out_file.write(myOutput)
