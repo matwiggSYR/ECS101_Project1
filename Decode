@@ -1,0 +1,36 @@
+import makeDictionary
+def Decode(txtFile):
+    myTxtFile = open(txtFile)
+    inputBin = myTxtFile.read()
+    myKey = makeDictionary.getCodeMap('bin2char')
+    binList = inputBin.split('.')
+    inputBin = binList[1]
+    print("bin:",inputBin)
+    myDecode = ""
+    lastIndex = 0
+    for i in range(len(inputBin)):
+        i = i + lastIndex
+        print("start of loop:", i)
+        if inputBin[i].startswith("1"):
+            myDecode = myDecode + str(myKey.get(inputBin[i: (i + 7)]))
+            lastIndex = 6 + i
+        elif inputBin[i].startswith("0"):
+            myDecode = myDecode + str(myKey.get(inputBin[i: (i + 5)]))
+            lastIndex = 3 + i
+        print("end of loop:", i)
+        print(myDecode)
+
+
+    #for i in range(len(inputBin)):
+     #   if inputBin[i:(i+7)] in myKey:
+      #      myDecode = myDecode + myKey.get(inputBin[i: (i + 7)])
+       #     i = i + 7
+        #elif inputBin[i:(i+5)] in myKey:
+         #   myDecode = myDecode + str(myKey.get(inputBin[i: (i + 5)]))
+          #  i = i + 5
+
+
+    print("myDecode:",myDecode)
+
+
+Decode("bin_output.txt")
