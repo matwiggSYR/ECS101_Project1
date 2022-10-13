@@ -22,8 +22,8 @@ def Code(txtFile):
     print("Decimal val:", myDecStr)
     print("Binary val:", binaryStr)
     print(myOutput)
-
-Code("sample.txt")
+#enter your file name below
+Code("*INPUT_FILENAME_.txt")
 
 
 
